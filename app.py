@@ -1,4 +1,4 @@
-from flask import Flask,jsonify,request
+from flask import Flask,jsonify,request,render_template
 from flask_restful import reqparse, Resource , Api
 import PIL.Image
 import json
@@ -47,6 +47,9 @@ def predict(img_bytes):
 
 
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 #Resources
 class Image(Resource):
