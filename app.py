@@ -56,13 +56,9 @@ class Image(Resource):
     def post(self):
         #receive th request
         file = request.files['img']
-        print(file)
         # Save the image 
-        # file.save('img_r.jpg')
-        #print(file)
-        #Read the image
-        # img= PIL.Image.open(file.stream)
         img_bytes = file.read()
+        # do prediction
         class_id , class_name = predict(img_bytes=img_bytes)
         return jsonify({'class':class_name})
         # return jsonify({"t":"v"})
